@@ -1,0 +1,17 @@
+<div class="userDetails">
+  <h2>User details</h2>
+  <a class="btn btn-small btn-warning" (click)="editUser()">edit</a>
+  <a class="btn btn-small btn-warning" (click)="deleteUser(user.id)">delete</a>
+  <div class="bg-warning p-5" *ngIf="message">{{message}}</div>
+  <table>
+    <tr>
+      <td>id</td><td>{{user?.id}}</td>
+    </tr>
+    <tr>
+      <td>name</td><td>{{user?.name}}</td>
+    </tr>
+    <tr>
+      <td>Password</td><td><a class="btn btn-small btn-warning" (click)="resetPassword(user.id)">reset</a></td>
+    </tr>
+  </table>
+</div>

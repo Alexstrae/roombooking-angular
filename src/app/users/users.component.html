@@ -1,0 +1,28 @@
+<h1>Users Admin</h1>
+<a class="btn btn-warning mb-3" (click)="addUser()">add</a>
+<div class="row">
+  <div class="col-6">
+    <table class="table">
+      <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let user of users"> <!-- repeat this tr for each user -->
+        <td>{{user.id}}</td>
+        <td>{{user.name}}</td>
+        <td><button (click)="viewUserDetails(user.id)" type="button" class="btn btn-primary">view</button></td>
+      </tr>
+      </tbody>
+    </table>
+    <div *ngIf="loadingData">{{message}}</div>
+  </div>
+  <div class="col-6">
+    <app-users-detail *ngIf="action === 'view'" (datachangedEvent)="loadData()" [user] = selectedUser> </app-users-detail>
+    <app-user-edit #userEditComponent *ngIf="action === 'edit' || action === 'add'" [user] = selectedUser (dataChangedEvent) = "loadData()"></app-user-edit>
+  </div>
+</div>
+
